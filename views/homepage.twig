@@ -8,23 +8,65 @@
   <body>
     <div class="container">
 
-      <div class="col-md-6">
-        <h1>Welcome to your address book!</h1>
+      {% if contacts is empty %}
+        <div class="col-md-6">
+          <h1>Welcome to your address book!</h1>
 
-        <p class="lead">When you fill out the form, your contacts will be show below just like the example!</p>
+          <p class="lead">When you fill out the form, your contacts will be show below just like the example!</p>
 
-        <hr>
+          <hr>
 
-        <h3>Contact Name</h3>
+          <h3>Contact Name</h3>
 
-        <p>
-          Phone: (555)-555-5555
-        </p>
+          <p>
+            Phone: (555)-555-5555
+          </p>
 
-        <p>
-          Address: 1234 Example Lane, Portland, OR
-        </p>
-      </div>
+          <p>
+            Address: 1234 Example Lane, Portland, OR
+          </p>
+        </div>
+
+      {% else %}
+
+        {% if error is not empty %}
+
+          <div class="error_heading">
+            <h3 class="error">One or more of your inputs are missing!</h3>
+          </div>
+
+        {% endif %}
+
+        <div class="col-md-6">
+          <h1>Address Book</h1>
+
+          <p class="lead">
+            A Simple place to store all your contacts!
+          </p>
+
+          {% if error is empty %}
+
+            {% for contact in contacts %}
+
+            <hr>
+
+            <h3>{{contact.getName()}}</h3>
+
+            <p>
+              Phone: {{contact.getPhone()}}
+            </p>
+
+            <p>
+              Address: {{contact.getAddress()}}
+            </p>
+
+            {% endfor %}
+          
+          {% endif %}
+
+        </div>
+
+      {% endif %}
 
       <div class="col-md-12">
         <form action="/" method="post">

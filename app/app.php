@@ -22,6 +22,9 @@
 
   $app->post('/', function() use ($app) {
 
+    //create a variable in case there is an error
+    $error = "";
+
     //check if we have valid post variables
     if($_POST['name'] && $_POST['phone'] && $_POST['address']) {
       echo "Valid variables";
@@ -30,13 +33,14 @@
       //save the object into the session
       $contact->save();
     } else {
+      $error = "Please fill out all fields!";
       echo "invalid variables";
     }
 
     var_dump($_SESSION['contacts']);
 
 
-    return $app['twig']->render('homepage.twig');
+    return $app['twig']->render('homepage.twig', array('contacts' => Contact::getContacts(), 'error' => $error));
   });
 
 
