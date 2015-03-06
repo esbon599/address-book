@@ -87,8 +87,12 @@
     return $app['twig']->render('delete.twig', array('phone' => $deleted_phone, 'name' => $deleted_name, 'address' => $deleted_address, 'button' => $button));
   });
 
-  $app->post('/deleted', function() use ($app) {
-    return $app['twig']->render('deleted.twig');
+  $app->post('/delete_contacts', function() use ($app) {
+
+    //clear out the SESSION['contacts']
+    Contact::deleteContacts();
+
+    return $app['twig']->render('delete_all.twig');
   });
 
 
