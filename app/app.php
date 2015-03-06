@@ -21,13 +21,13 @@
     return $app['twig']->render('homepage.twig', array('contacts' => Contact::getContacts()));
   });
 
-  $app->post('/', function() use ($app) {
+  $app->post('/create_contact', function() use ($app) {
 
     //create a variable in case there is an error
     $error = "";
 
     //check if we have valid post variables and we aren't coming from a delete menu
-    if($_POST['name'] && $_POST['phone'] && $_POST['address'] && $_POST['no'] != "no") {
+    if($_POST['name'] && $_POST['phone'] && $_POST['address']) {
 
       //create a contact object
       $contact = new Contact($_POST['name'], $_POST['phone'], $_POST['address']);
@@ -38,7 +38,13 @@
       $error = "Please fill out all fields!";
     }
 
-    return $app['twig']->render('homepage.twig', array('contacts' => Contact::getContacts(), 'error' => $error));
+    return $app['twig']->render('create_contact.twig', array('contact' => $contact, 'error' => $error));
+
+  });
+
+  $app->post('/', function() use ($app) {
+
+    return $app['twig']->render('homepage.twig', array('contacts' => Contact::getContacts()));
   });
 
   $app->post('/delete', function() use ($app) {
