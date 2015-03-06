@@ -4,9 +4,10 @@
   require_once __DIR__.'/../src/contact.php';
 
   $app = new Silex\Application();
+  $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views/'));
 
   $app->get('/', function () use ($app) {
-    return "HOME";
+    return $app['twig']->render('homepage.twig');
   });
 
 
