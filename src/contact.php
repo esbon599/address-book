@@ -50,6 +50,10 @@
       return $_SESSION['contacts'];
     }
 
+    static function deleteContacts() {
+      $_SESSION['contacts'] = array();
+    }
+
   }
 
 
