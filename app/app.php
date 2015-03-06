@@ -89,10 +89,17 @@
 
   $app->post('/delete_contacts', function() use ($app) {
 
-    //clear out the SESSION['contacts']
-    Contact::deleteContacts();
+    //save the post variable
+    $delete = $_POST['delete'];
+;
+    //clear out the SESSION['contacts'] if we confirmed
+    if($delete == "yes")
+    {
+      Contact::deleteContacts();
+    }
 
-    return $app['twig']->render('delete_all.twig');
+
+    return $app['twig']->render('delete_all.twig', array('delete' => $delete));
   });
 
 

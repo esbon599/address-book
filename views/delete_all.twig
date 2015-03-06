@@ -11,6 +11,8 @@
       <div class="row">
         <div class="col-md-12">
 
+          {% if delete is not empty %}
+
           <h1>Your entire contact book</h1>
             <p class="lead">
               was deleted successfully.
@@ -19,6 +21,24 @@
             <p>
               <a href="/">Return to the homepage</a>
             </p>
+
+          {% else %}
+
+            <h1>You are about to delete your <b>ENTIRE</b> address book.</h1>
+
+            <p class="lead">
+              Are you sure?
+            </p>
+
+            <form class="form-inline" action="/delete_contacts" method="post">
+              <button name="delete" value="yes" class="btn btn-danger" type="submit">Yes</button>
+            </form>
+
+            <form class="form-inline" action="/" method="post">
+              <button name="no" value="no" class="btn btn-default">No</button>
+            </form>
+
+          {% endif %}
 
         </div>
       </div>
