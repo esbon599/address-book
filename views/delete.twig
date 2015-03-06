@@ -11,7 +11,20 @@
       <div class="row">
         <div class="col-md-12">
 
-          {% if phone is not empty %}
+          <p>
+            {{name}}
+          </p>
+          <p>
+            {{address}}
+          </p>
+          <p>
+            {{phone}}
+          </p>
+          <p>
+            {{button}}
+          </p>
+
+          {% if button is not empty %}
 
             <h1>You are about to delete {{name}}</h1>
             <p class="lead">
