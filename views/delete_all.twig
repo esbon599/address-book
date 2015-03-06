@@ -30,12 +30,16 @@
               Are you sure?
             </p>
 
-            <form class="form-inline" action="/delete_contacts" method="post">
-              <button name="delete" value="yes" class="btn btn-danger" type="submit">Yes</button>
+            <form action="/delete_contacts" method="post">
+              <div class="form-group">
+                <button name="delete" value="yes" class="btn btn-danger" type="submit">Yes, delete ALL</button>
+              </div>
             </form>
 
-            <form class="form-inline" action="/" method="post">
-              <button name="no" value="no" class="btn btn-default">No</button>
+            <form action="/" method="post">
+              <div class="form-group">
+                <button name="no" value="no" class="btn btn-default">No</button>
+              </div>
             </form>
 
           {% endif %}
