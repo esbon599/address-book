@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>New Contact!</title>
+  </head>
+  <body>
+    <div class="container">
+
+      {% if error is not empty %}
+
+        <div class="error_heading">
+          <h3 class="error">One or more of your inputs are missing!</h3>
+        </div>
+
+      {% endif %}
+
+      <div class="col-md-12">
+        <h1>You've created a new Contact!</h1>
+
+        <p class="lead">
+          {{contact.getName()}}
+        </p>
+        <p>
+          {{contact.getPhone()}}
+        </p>
+        <p>
+          {{contact.getAddress()}}
+        </p>
+
+        <p>
+          <a href="/">Return to your contacts</a>
+        </p>
+
+      </div>
+
+    </div>
+  </body>
+</html>
