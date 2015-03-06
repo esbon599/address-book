@@ -7,22 +7,39 @@
   </head>
   <body>
     <div class="container">
-      <h1>Welcome to your address book!</h1>
 
-      <p class="lead">When you fill out the form, your contacts will be show below just like the example!</p>
+      <div class="col-md-6">
+        <h1>Welcome to your address book!</h1>
 
-      <hr>
+        <p class="lead">When you fill out the form, your contacts will be show below just like the example!</p>
 
-      <h3>Contact Name</h3>
+        <hr>
 
-      <p>
-        Phone: (555)-555-5555
-      </p>
+        <h3>Contact Name</h3>
 
-      <p>
-        Address: 1234 Example Lane, Portland, OR
-      </p>
+        <p>
+          Phone: (555)-555-5555
+        </p>
 
+        <p>
+          Address: 1234 Example Lane, Portland, OR
+        </p>
+      </div>
+
+      <div class="col-md-12">
+        <form action="/" method="post">
+          <div class="form-group">
+            <label for="name">Enter contact name</label>
+            <input type="text" name="name" id="name" class="form-control">
+            <label for="phone">Enter contact phone</label>
+            <input type="tel" name="phone" id="phone" class="form-control">
+            <label for="address">Enter contact address</label>
+            <input type="text" name="address" id="address" class="form-control">
+
+            <button type="submit" class="btn-success">Add Contact</button>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
