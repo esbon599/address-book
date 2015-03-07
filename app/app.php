@@ -118,7 +118,7 @@
       $all_contact_info = $contact->getName() . $contact->getPhone() . $contact->getAddress();
 
       //I didn't steal this from stackexchange, Daniel and I were talking about it on Thursday
-      if(fnmatch($search_item, $all_contact_info))
+      if(fnmatch(strtolower($search_item), strtolower($all_contact_info)))
       {
         array_push($matching_contacts, $contact);
       }
