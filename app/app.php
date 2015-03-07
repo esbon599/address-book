@@ -91,7 +91,7 @@
 
     //save the post variable
     $delete = $_POST['delete'];
-;
+
     //clear out the SESSION['contacts'] if we confirmed
     if($delete == "yes")
     {
@@ -102,7 +102,31 @@
     return $app['twig']->render('delete_all.twig', array('delete' => $delete));
   });
 
+  $app->post('/search', function() use ($app) {
 
+    //make the search into a wildcard expression for fnmatch
+    //Ex. search becomes *search*
+    $search_item = "*" . $_POST['search'] . "*";
+
+    //create an array for contacts matching the expression
+    $matching_contacts = array();
+
+    foreach(Contact::getContacts() as $contact)
+    {
+
+      //dump all contact info into one string to compare with expression
+      $all_contact_info = $contact->getName() . $contact->getPhone() . $contact->getAddress();
+
+      //I didn't steal this from stackexchange, Daniel and I were talking about it on Thursday
+      if(fnmatch($search_item, $all_contact_info))
+      {
+        array_push($matching_contacts, $contact);
+      }
+
+    }
+
+    return $app['twig']->render('search.twig', array('results' => $matching_contacts));
+  });
 
   return $app;
 

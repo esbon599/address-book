@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Search Results</title>
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="row">
+
+        <h1>Search Results</h1>
+
+        <hr>
+
+        {% if results is not empty %}
+
+          {% for contact in results %}
+          <div class="col-md-12">
+
+            <h3>{{contact.getName()}}</h3>
+
+            <p>
+              Phone: {{contact.getPhone()}}
+            </p>
+
+            <p>
+              Address: {{contact.getAddress()}}
+            </p>
+
+          </div>
+
+          {% endfor %}
+
+        {% else %}
+
+          <div class="col-md-12">
+            <h3>No matching search results were found.</h3>
+          </div>
+
+        {% endif %}
+
+      </div>
+
+      <div class="row">
+        <hr>
+        <div class="col-md-12">
+          <p>
+            <a href="/">Return to homepage</a>
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
